@@ -4,12 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <title>Juros Compostos</title>
 </head>
 <body>
-    
+    <div id="first-page">
+        <h1>SIMULADOR</h1>
+            <form id="form">
+                <div id="dataInput">
+                    <label for="name"> Nome </label>
+                        <input type="text" name="name" id="name" placeholder="Digite seu nome"> <br>
 
+                    <label for="monthly"> Mensalidade </label>
+                        <input type="text" name="monthly" id="monthly" placeholder="Valor mensal"> <br>
+                    
+                    <label for="fees"> Taxa de Juros </label> 
+                        <input type="text" name="fees" id="fees" placeholder="Sua taxa de juros"><br><br>
+                    
+        
+                    <label for="time" > Tempo </label>
+                        <Select name="time" id="time">
+                            <option value="1">1 ano</option>
+                            <option value="2">2 ano</option>
+                            <option value="3">3 ano</option>
+                            <option value="4">4 ano</option>
+                            <option value="5">5 ano</option>
+                            <option value="6">6 ano</option>
+                            <option value="7">7 ano</option>
+                            <option value="8">8 ano</option>
+                            <option value="9">9 ano</option>
+                            <option value="10">10 ano</option>
+                        </Select> <br><br><br>
+                </div>        
+                <button id="buttonOne">SIMULAR</button>
+            </form>
+        </div>
+
+             <!---------------------RESULTADO DA SIMULAÇÃO---------------------------->
+
+        <div id="last-page">
+            <h1 id="h1name">oi</h1>
+            <h2 id="result"></h2>
+
+            <button id="buttonTwo">SIMULAR NOVAMENTE</button>
+        </div>
+
+ <!---   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.14.1/math.min.js"></script>  -->
     <script src="script.js"></script>
 </body>
 </html>
