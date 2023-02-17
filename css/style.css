@@ -3,11 +3,6 @@
     padding: 0px;
 }
 
-
-#last-page {
-    display: none;
-}
-
 body {
     display: flex;
     display: flex;
@@ -41,3 +36,16 @@ body {
     padding: 4px;
 }
 
+             /* --------------- LAST PAGE ---------------*/
+         
+#last-page {
+    background-color: rgb(48, 48, 48);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    height: 50vh;
+     padding: 40px;
+    margin-top: 50px;
+    color: white;
+}

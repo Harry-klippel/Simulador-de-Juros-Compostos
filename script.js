@@ -1,35 +1,52 @@
 const firstPage = document.querySelector('#first-page')
 const lastPage = document.querySelector('#last-page')
-const name = document.querySelector('#name')
+const userName = document.querySelector('#name')
 const monthly = document.querySelector('#monthly')
 const fees = document.querySelector('#fees')
 const inputTime = document.querySelector('#time')
-const buttonOne = document.querySelector('#buttonOne')
-const buttonTwo = document.querySelector('#buttonTwo')
-const h1name = document.querySelector("#h1name")
-const result = document.querySelector('#result')
+const button = document.querySelector('#buttonTwo')
+const h2 = document.querySelector("#h2name")
+const h3 = document.querySelector('#h3')
+const message = document.querySelector('#result')
 const form = document.querySelector('#form')
 
+ /*---------Chamada da 2º tela com a resposta----------*/
 
-console.log()
+function extractNumber(data) {
+    const roundOne = data.match(/\d+(?:\.\d+)?/g)[0]
+    return Number(roundOne).toFixed(2)
+}
 
-form.onsubmit = function(evento){
-    evento.preventDefault()
+function displayMessage(roundTree){
+    firstPage.style.display = "none"
+    lastPage.style.display = "flex"
+    let user = userName.value
+    let monthlyValue = monthly.value
+    let feesValue = fees.value
+    let time = inputTime.value
+    
+    h2.innerHTML = `Olá ${user}` 
+    message.innerHTML = `Juntando R$ ${monthlyValue} todos os meses, a uma taxa de juros de ${feesValue}% você terá no final de ${time} anos: ↓`
+    h3.innerHTML =  roundTree
+}
 
-let monthlyValue = monthly.value
-let time = inputTime.value * 12
-let feesValue = fees.value
-let nameUser = name.value
-
-
-
-
-
+function buttomReturn(){
+    button.addEventListener('click', () => {
+    firstPage.style.display = "flex"
+    lastPage.style.display = "none"
+    })
+}
 
 /*----Requisição para a API http://api.mathjs.org/v4/ --- */
 
- function resul(){
+form.onsubmit = function(evento){
+    evento.preventDefault()
+    let monthlyValue = monthly.value.replace(',','.')
+    let time = inputTime.value * 12 
+    let feesValue = fees.value.replace(',','.')
+    feesValue = feesValue / 100
 
+  function consult(){
     const dados = fetch("http://api.mathjs.org/v4/", {
          method: "POST",
          headers: {
@@ -40,17 +57,11 @@ let nameUser = name.value
             })
         })
         .then(response => response.text())
-        .then(data => {
-
-            const roundOne = data.match(/\d+(?:\.\d+)?/g)[0]
-            const roundTree = Number(roundOne).toFixed(2)
-            
-            lastPage.style.display ="block"
-            h1name.innerHTML = `Você terá R$ ${roundTree} ` 
-            console.log(roundTree)
-            }); 
+        .then(extractNumber)
+        .then(displayMessage)
+        .then(buttomReturn)
     }
-    resul()
+    consult()
     
 }
 
