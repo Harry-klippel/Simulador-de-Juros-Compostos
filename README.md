@@ -1,2 +1,2 @@
-# page-juros-compostos
+# Simulador Juros Compostos
 # page-juros-compostos
