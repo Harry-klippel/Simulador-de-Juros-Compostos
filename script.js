@@ -10,6 +10,7 @@ const h3 = document.querySelector('#h3')
 const message = document.querySelector('#result')
 const form = document.querySelector('#form')
 
+
  /*---------Chamada da 2º tela com a resposta----------*/
 
 function extractNumber(data) {
@@ -26,16 +27,10 @@ function displayMessage(roundTree){
     let time = inputTime.value
     
     h2.innerHTML = `Olá ${user}` 
-    message.innerHTML = `Juntando R$ ${monthlyValue} todos os meses, a uma taxa de juros de ${feesValue}% você terá no final de ${time} anos: ↓`
+    message.innerHTML = `Juntando R$ <u>${monthlyValue},00</u> todos os meses, durante <u>${time} ano(s)</u>, a uma taxa de juros de <u>${feesValue}%</u> você terá juntado: ↓`
     h3.innerHTML =  roundTree
 }
 
-function buttomReturn(){
-    button.addEventListener('click', () => {
-    firstPage.style.display = "flex"
-    lastPage.style.display = "none"
-    })
-}
 
 /*----Requisição para a API http://api.mathjs.org/v4/ --- */
 
@@ -46,8 +41,8 @@ form.onsubmit = function(evento){
     let feesValue = fees.value.replace(',','.')
     feesValue = feesValue / 100
 
-  function consult(){
-    const dados = fetch("http://api.mathjs.org/v4/", {
+   function consult(){
+    const dados =  fetch("http://api.mathjs.org/v4/", {
          method: "POST",
          headers: {
          "Content-Type": "application/json"
@@ -62,8 +57,44 @@ form.onsubmit = function(evento){
         .then(buttomReturn)
     }
     consult()
-    
 }
 
+/*---------Manipulação dos Inputs-------- */
+
+monthly.addEventListener('focus', () => {
+    monthly.placeholder = "R$"
+  });
+  
+  monthly.addEventListener("blur",() => {
+    monthly.placeholder = "Valor da Mensalidade";
+  });
+
+  fees.addEventListener('focus', () => {
+    fees.placeholder = "%"
+  });
+  
+  fees.addEventListener("blur",() => {
+    fees.placeholder = "Taxa de Juros";
+  });
+
+
+  /*---------Efeito Texto digitando sozinho-------- */
+
+document.addEventListener('DOMContentLoaded', () => {
+  new TypeIt(".animated", {
+    speed: 220,
+    delay: 400,
+    waitUntilVisible: true,
+    
+  })
+    .type('de Roubo Composto')
+    .move(-9)
+    .delete(5)
+    .type('Juros', {delay:500})
+    .move(null, { to: "END" })
+    .type('s.')
+
+  .go();
+})
 
 

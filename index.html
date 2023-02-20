@@ -5,26 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="css/responsive.css">
+
+    <!--Fontes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+    
     <title>Juros Compostos</title>
 </head>
 <body>
-    <div id="first-page">
-        <h1>SIMULADOR</h1>
+    <div id="container">
+        <div id="first-page">
+            <div class="protection">
+                <h1 id="text" >Simulador <span class="animated"></span></h1>  
+            </div>   
+                
             <form id="form">
                 <div id="dataInput">
-                    <label for="name"> Nome </label>
-                        <input type="text" name="name" id="name" placeholder="Digite seu nome"> <br>
 
-                    <label for="monthly"> Mensalidade </label>
-                        <input type="text" name="monthly" id="monthly" placeholder="Valor mensal"> <br>
-                    
-                    <label for="fees"> Taxa de Juros </label> 
-                        <input type="text" name="fees" id="fees" placeholder="Sua taxa de juros"><br><br>
-                    
-        
-                    <label for="time" > Tempo </label>
+                    <div id="spacing">
+                        <label for="name"> Nome: </label> <br>
+                        <input type="text" name="name" id="name" placeholder="Digite seu nome"> 
+                    </div><br>
+
+                    <div id="spacing">
+                        <label for="monthly"> Mensalidade: </label>
+                        <input type="number" name="monthly" id="monthly" placeholder="Valor da Mensalidade"> 
+                    </div><br>
+
+                    <div id="spacing">           
+                        <label for="fees"> Taxa de Juros: </label> 
+                        <input type="text" name="fees" id="fees" placeholder="Sua taxa de juros"> 
+                    </div> <br><br>
+
+                    <label for="time" > Tempo: </label> 
                         <Select name="time" id="time">
                             <option value="1">1 ano</option>
                             <option value="2">2 ano</option>
@@ -38,20 +53,23 @@
                             <option value="10">10 ano</option>
                         </Select> <br><br><br>
                 </div>        
-                <button id="buttonOne">SIMULAR</button>
+                    <button id="buttonOne">SIMULAR</button>
             </form>
         </div>
 
-             <!---------------------RESULTADO DA SIMULAÇÃO---------------------------->
+                <!---------------------RESULTADO DA SIMULAÇÃO---------------------------->
 
-        <div id="last-page">
-            <h2 id="h2name"></h2>
-            <span id="result"></span>
-            <h3 id="h3"></h3>
-            <button id="buttonTwo">SIMULAR NOVAMENTE</button>
+            <div id="last-page" >
+                <h2 id="h2name" class="h2animation"></h2>
+                <span id="result"></span>
+                <h3 id="h3"></h3>
+                <button id="buttonTwo">SIMULAR NOVAMENTE</button>
         </div>
+    </div>
 
- <!---   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.14.1/math.min.js"></script>  -->
+                                     
+    <script crossorigin="anonymous" src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script> <!--TypeIt-->
     <script src="script.js"></script>
+    
 </body>
 </html>
