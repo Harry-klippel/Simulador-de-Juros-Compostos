@@ -23,7 +23,7 @@ body {
     border-radius: 50px;
     height:68vh;
     padding: 30px;
-    margin-top: 30%;
+    margin-top: 20%;
     color: rgb(0, 0, 0);
 }
 
@@ -32,36 +32,62 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .protection { 
     width: 360px;
     padding-bottom: 30px;
     margin-bottom: 80px;
 }
+
 #first-page h1 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, Geneva, Tahoma, sans-serif, 'Arial Narrow Bold', sans-serif;
     font-weight: 900;
     letter-spacing: 4.5px;
     position: absolute;
- 
 }
                            /*-----------INPUTS-------------*/
 
 #first-page #spacing {
     width: 240px;
-  } 
+    margin-top: 8px;
+    margin-bottom: 0;
+} 
+
+#first-page label {
+    font-size: 19px;
+    margin-left: 8px;
+}
 
 #first-page input {
     width: 240px;
-    margin-top: 3px;
-    padding: 14.5px;
+    padding: 14.7px;
+    margin-bottom: 0;
     border-radius: 15px;
-    border:solid 0.5px black;
+    border:solid 0.5px rgb(0, 0, 0);
 }
 
+#first-page .error { 
+    border: 1px solid red;
+    color: red;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    font-weight: 100;
+    margin-left: 8px;
+}
+
+/* para o placeholder do input mudar a cor em caso de "não preenchido"
+#first-page .error::placeholder {
+    color:rgb(228, 5, 5);
+}*/
+
+
 #first-page select {
-   margin-left: 5px;
-  border-radius: 14px;
-  padding: 8px; 
+    margin-left: 5px;
+    border-radius: 14px;
+    padding: 8px; 
 }
 
 button {
@@ -69,7 +95,6 @@ button {
     font-family: 'Overpass', sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
-    margin: 10px;
     padding: 20px 55px;
     text-align: center;
     transition: 0.5s;
@@ -88,7 +113,6 @@ button:hover {
 }
      
 
-
              /* --------------- LAST PAGE ---------------*/
          
 #last-page {
@@ -96,7 +120,7 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    background-color: rgba(252, 252, 252, 0.911);
+    background-color: rgba(252, 252, 252, 0.959);
     border-radius: 50px;
     height: 46vh;
     padding: 30px;
@@ -105,16 +129,16 @@ button:hover {
 }
 
 #last-page #h2name {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 700;
     margin-top: 20px;
 }
 
 #last-page #result {
     margin: 10px 0 0px;
-    font-size: 22px;
+    font-size: 24px;
     text-align: center;
-    line-height: 27px;
+    line-height: 31px;
 }
 
 #last-page #h3 {

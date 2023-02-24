@@ -4,7 +4,8 @@ const userName = document.querySelector('#name')
 const monthly = document.querySelector('#monthly')
 const fees = document.querySelector('#fees')
 const inputTime = document.querySelector('#time')
-const button = document.querySelector('#buttonTwo')
+const buttonTwo = document.querySelector('#buttonTwo')
+const buttonOne = document.querySelector('#buttonOne')
 const h2 = document.querySelector("#h2name")
 const h3 = document.querySelector('#h3')
 const message = document.querySelector('#result')
@@ -28,7 +29,102 @@ function displayMessage(roundTree){
     
     h2.innerHTML = `Olá ${user}` 
     message.innerHTML = `Juntando R$ <u>${monthlyValue},00</u> todos os meses, durante <u>${time} ano(s)</u>, a uma taxa de juros de <u>${feesValue}%</u> você terá juntado: ↓`
-    h3.innerHTML =  roundTree
+    h3.innerHTML = `R$ ${roundTree}` 
+}
+
+function buttomReturn() {
+  buttonTwo.addEventListener('click', () => {
+    lastPage.style.display = "none";
+    firstPage.style.display = "flex";
+
+    userName.value = "";
+    monthly.value = "";
+    fees.value = "";
+    inputTime.value = "1";
+  })
+}
+
+/*-------------Validando Inputs------------------*/
+
+function validation() {
+  let isValid = true;
+  const errorMessage1 = document.createElement("span")
+  const errorMessage2 = document.createElement("span")
+  const errorMessage3 = document.createElement("span")
+
+  const existingError1 = userName.nextElementSibling
+  const existingError2 = monthly.nextElementSibling
+  const existingError3 = fees.nextElementSibling
+  
+  // Adiciona evento de focus para remover mensagem de erro
+  userName.addEventListener("focus", function() {
+    if (existingError1) {
+      existingError1.remove();
+      userName.classList.remove("error");
+    }
+  });
+
+  // Adiciona evento de focus para remover mensagem de erro
+  monthly.addEventListener("focus", function() {
+    if (existingError2) {
+      existingError2.remove();
+      monthly.classList.remove("error");
+    }
+  });
+
+  // Adiciona evento de focus para remover mensagem de erro
+  fees.addEventListener("focus", function() {
+    if (existingError3) {
+      existingError3.remove();
+      fees.classList.remove("error");
+    }
+  });
+
+  if (userName.value === "") {
+    userName.classList.add("error")
+    if(!existingError1){
+      errorMessage1.classList.add("error-message")
+      errorMessage1.textContent = "* Por favor, preencha este campo."
+      userName.insertAdjacentElement("afterend", errorMessage1) // Adiciona o span após o input
+    }
+    isValid = false
+  } 
+    if(userName.value !== "" ) {
+    userName.classList.remove("error")
+    existingError1.textContent = ""
+  }
+
+  
+  if (monthly.value === "" || isNaN(monthly.value.replace(",", "."))) {
+    monthly.classList.add("error")
+    if(!existingError2){
+      errorMessage2.classList.add("error-message")
+      errorMessage2.textContent = "* Por favor, preencha este campo."
+      monthly.insertAdjacentElement("afterend", errorMessage2) // Adiciona o span após o input
+    }
+    isValid = false
+  } 
+    if(monthly.value !== "" ) {
+    monthly.classList.remove("error")
+    existingError2.textContent = ""
+  }
+  
+  if (fees.value === "" || isNaN(fees.value.replace(",", "."))) {
+    fees.classList.add("error")
+    if(!existingError3){
+      errorMessage3.classList.add("error-message")
+      errorMessage3.textContent = "* Por favor, preencha este campo."
+      fees.insertAdjacentElement("afterend", errorMessage3) // Adiciona o span após o input
+    }
+    isValid = false
+  } 
+    if(fees.value !== "") {
+    fees.classList.remove("error")
+    existingError3.textContent = ""
+  }
+  
+  
+  return isValid
 }
 
 
@@ -36,6 +132,15 @@ function displayMessage(roundTree){
 
 form.onsubmit = function(evento){
     evento.preventDefault()
+
+
+     if (!validation()) {
+       buttonOne.addEventListener('click', ()=> {
+        
+       } )
+      return;
+      }
+
     let monthlyValue = monthly.value.replace(',','.')
     let time = inputTime.value * 12 
     let feesValue = fees.value.replace(',','.')
@@ -55,6 +160,10 @@ form.onsubmit = function(evento){
         .then(extractNumber)
         .then(displayMessage)
         .then(buttomReturn)
+        .catch(error => {
+          alert("Ops! Estamos enfrentando uma instabilidade no momento, por favor tente mais tarde.")
+        })
+      
     }
     consult()
 }
@@ -82,8 +191,7 @@ monthly.addEventListener('focus', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   new TypeIt(".animated", {
-    speed: 220,
-    delay: 400,
+    speed: 190,
     waitUntilVisible: true,
     
   })
