@@ -45,6 +45,7 @@ body {
     letter-spacing: 4.5px;
     position: absolute;
 }
+
                            /*-----------INPUTS-------------*/
 
 #first-page #spacing {
@@ -75,7 +76,8 @@ body {
     color: red;
     font-size: 12px;
     font-weight: 100;
-    margin-left: 8px;
+    margin: 2px 0 0 8px;
+    position: absolute;
 }
 
 /* para o placeholder do input mudar a cor em caso de "não preenchido"
@@ -145,6 +147,37 @@ button:hover {
     margin: 30px 0;
     padding: 12px;
     font-size: 42px;
-    border: 2px solid black;
+    border: 1px solid transparent;
     border-radius: 18px;
-} 
+    box-shadow: 0 0 0 1.5px black, 0 0 0 2.6px purple;
+    animation: pulsate 1s ease-out 0s 2;
+  }
+  
+  @keyframes pulsate {
+    0% {
+      transform: scale(1);
+      border: 0.4px solid #030303;
+    }
+    50% {
+      transform: scale(1.1);
+      border: 0.1px solid #800080;
+    }
+    100% {
+      transform: scale(1);
+      border: 0.4px solid #020202;
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    
+  }
+
+
+
+
+
+  
+  
+

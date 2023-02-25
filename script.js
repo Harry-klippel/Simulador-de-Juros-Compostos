@@ -27,9 +27,12 @@ function displayMessage(roundTree){
     let feesValue = fees.value
     let time = inputTime.value
     
-    h2.innerHTML = `Olá ${user}` 
-    message.innerHTML = `Juntando R$ <u>${monthlyValue},00</u> todos os meses, durante <u>${time} ano(s)</u>, a uma taxa de juros de <u>${feesValue}%</u> você terá juntado: ↓`
-    h3.innerHTML = `R$ ${roundTree}` 
+    h2.innerHTML = `Olá <strong style="font-weight:900; font-family: Arial Black, sans-serif;">${user}!</strong>` 
+    message.innerHTML = `Juntando R$ <span style="background-image: linear-gradient(to right, black, purple);-webkit-background-clip: text;color: transparent;">${monthlyValue},00</span> todos os meses, durante <span style="background-image: linear-gradient(to right, black, purple);-webkit-background-clip: text;color: transparent;">${time} ano(s)</span>, a uma taxa de juros de <span style="background-image: linear-gradient(to right, black, purple);-webkit-background-clip: text;color: transparent;">${feesValue}%</span> você terá juntado: ↓`
+    h3.innerHTML = `<span style="color: black;font-weight: 900;font-family: Arial Black, sans-serif;">R$ ${roundTree}</span>`
+    
+  
+    
 }
 
 function buttomReturn() {
