@@ -34,13 +34,14 @@ function displayMessage(roundTree){
 
 function buttomReturn() {
   buttonTwo.addEventListener('click', () => {
-    lastPage.style.display = "none";
-    firstPage.style.display = "flex";
+    //location.reload()   <== poderia usar também, mas quero evitar recarregar a pagina
+    lastPage.style.display = "none"
+    firstPage.style.display = "flex"
 
-    userName.value = "";
-    monthly.value = "";
-    fees.value = "";
-    inputTime.value = "1";
+    userName.value = ""
+    monthly.value = ""
+    fees.value = ""
+    inputTime.value = "1"
   })
 }
 
@@ -55,75 +56,72 @@ function validation() {
   const existingError1 = userName.nextElementSibling
   const existingError2 = monthly.nextElementSibling
   const existingError3 = fees.nextElementSibling
-  
-  // Adiciona evento de focus para remover mensagem de erro
-  userName.addEventListener("focus", function() {
-    if (existingError1) {
-      existingError1.remove();
-      userName.classList.remove("error");
-    }
-  });
 
-  // Adiciona evento de focus para remover mensagem de erro
-  monthly.addEventListener("focus", function() {
-    if (existingError2) {
-      existingError2.remove();
-      monthly.classList.remove("error");
-    }
-  });
-
-  // Adiciona evento de focus para remover mensagem de erro
-  fees.addEventListener("focus", function() {
-    if (existingError3) {
-      existingError3.remove();
-      fees.classList.remove("error");
-    }
-  });
-
-  if (userName.value === "") {
+  if (userName.value == "") {
     userName.classList.add("error")
-    if(!existingError1){
-      errorMessage1.classList.add("error-message")
-      errorMessage1.textContent = "* Por favor, preencha este campo."
-      userName.insertAdjacentElement("afterend", errorMessage1) // Adiciona o span após o input
-    }
-    isValid = false
-  } 
-    if(userName.value !== "" ) {
+    errorMessage1.classList.add("error-message")
+    errorMessage1.textContent = "* Por favor, preencha este campo."
+    userName.insertAdjacentElement("afterend", errorMessage1) // Adiciona o span após o input
+    isValid = false 
+  } else {
     userName.classList.remove("error")
-    existingError1.textContent = ""
   }
 
-  
+
   if (monthly.value === "" || isNaN(monthly.value.replace(",", "."))) {
-    monthly.classList.add("error")
-    if(!existingError2){
+      monthly.classList.add("error")
       errorMessage2.classList.add("error-message")
       errorMessage2.textContent = "* Por favor, preencha este campo."
-      monthly.insertAdjacentElement("afterend", errorMessage2) // Adiciona o span após o input
-    }
-    isValid = false
-  } 
-    if(monthly.value !== "" ) {
+      monthly.insertAdjacentElement("afterend", errorMessage2) 
+      isValid = false
+    }else { 
     monthly.classList.remove("error")
-    existingError2.textContent = ""
   }
-  
+
+
   if (fees.value === "" || isNaN(fees.value.replace(",", "."))) {
-    fees.classList.add("error")
-    if(!existingError3){
+      fees.classList.add("error")
       errorMessage3.classList.add("error-message")
       errorMessage3.textContent = "* Por favor, preencha este campo."
-      fees.insertAdjacentElement("afterend", errorMessage3) // Adiciona o span após o input
-    }
-    isValid = false
-  } 
-    if(fees.value !== "") {
+      fees.insertAdjacentElement("afterend", errorMessage3) 
+      isValid = false
+  } else {
     fees.classList.remove("error")
+    }
+  
+ 
+  userName.addEventListener("focus", function() {
+    if (existingError1) {
+      existingError1.remove()
+      userName.classList.remove("error")
+    }
+  })
+  if(existingError1) {
+    existingError1.textContent = ""
+    }
+  
+
+  monthly.addEventListener("focus", function() {
+    if (existingError2) {
+      existingError2.remove()
+      monthly.classList.remove("error")
+    }
+  })
+  if(existingError2) {
+    existingError2.textContent = ""
+    }
+
+
+  fees.addEventListener("focus", function() {
+    if (existingError3) {
+      existingError3.remove()
+      fees.classList.remove("error")
+    }
+  })
+  if(existingError3) {
     existingError3.textContent = ""
-  }
-  
-  
+    }
+
   return isValid
 }
 
@@ -136,7 +134,7 @@ form.onsubmit = function(evento){
 
      if (!validation()) {
        buttonOne.addEventListener('click', ()=> {
-        
+        console.log('ok')
        } )
       return;
       }
