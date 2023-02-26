@@ -38,7 +38,7 @@
         background-color: rgba(252, 252, 252, 0.767);
         height:80vh;
         width:40%;
-        margin: 2% auto;
+        margin: -22px auto 0;
         align-items: initial;
         text-align: center;
     }

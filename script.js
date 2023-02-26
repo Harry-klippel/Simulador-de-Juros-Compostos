@@ -11,7 +11,6 @@ const h3 = document.querySelector('#h3')
 const message = document.querySelector('#result')
 const form = document.querySelector('#form')
 
-
  /*---------Chamada da 2º tela com a resposta----------*/
 
 function extractNumber(data) {
@@ -145,7 +144,7 @@ form.onsubmit = function(evento){
     feesValue = feesValue / 100
 
    function consult(){
-    const dados =  fetch("http://api.mathjs.org/v4/", {
+    const dados =  fetch("https://api.mathjs.org/v4/", {
          method: "POST",
          headers: {
          "Content-Type": "application/json"
@@ -202,5 +201,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   .go();
 })
-
-
