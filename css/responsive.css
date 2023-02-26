@@ -4,6 +4,7 @@
 }
 
 @media(min-width: 750px){
+
     body{
         background-image: url('img/dark-gradient-background.jpg');
         background-repeat: no-repeat;
@@ -16,7 +17,7 @@
         background-color: rgba(252, 252, 252, 0.767);
         height:80vh;
         width:40%;
-        margin: 2% auto;
+        margin: -22px auto 0;
         align-items: initial;
     }
 
@@ -33,8 +34,6 @@
         
     }
 
-
-
     #last-page {
         background-color: rgba(252, 252, 252, 0.767);
         height:80vh;
@@ -43,4 +42,10 @@
         align-items: initial;
         text-align: center;
     }
+
+    .footer {
+        margin-top: 8px;
+    }
+
+
 }
